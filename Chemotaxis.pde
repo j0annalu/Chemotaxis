@@ -23,9 +23,9 @@
  	
  	strokeWeight(5);
  	stroke(0);
- 	arc(mouseX, mouseY, 50,50,0, 360);
- }  
- class Bacteria    
+ 	noFill();
+ 	ellipse(mouseX, mouseY, 100,100);
+ }
  {     
  	int myX, myY;
  	Bacteria(){
@@ -35,28 +35,20 @@
  	void move(){
  		myX = myX + (int)(Math.random()*3)-1;
  		myY = myY + (int)(Math.random()*3)-1;
- 		if (myX + 5 == mouseX)
- 		{
- 			myX = myX - 5;
- 		}
- 		if (myX - 5 == mouseX)
- 		{
- 			myX = myX +5;
- 		}
- 		if (myY + 5 == mouseY)
- 		{
- 			myY = myY - 5;
- 		} 
- 		if(myY - 5 == mouseY)
- 		{
- 			myY = myY + 5;
- 		}
+ 		
  		
  	}
  	void show(){
  		noStroke();
  		rgb = rgb + 1;
  		fill(rgb,rgb,rgb);
- 		ellipse(myX,myY,5,5);
+ 		if (myX>=mouseX + 25 && myX <= mouseX - 25 && myY >= mouseY + 25 && myY <= mouseX - 25)
+ 		{
+  			ellipse(myX, myY, 25,25);
+ 		}
+ 		else {
+ 			ellipse(myX,myY,5,5);
+ 		}
+ 		
  	}
  }    
