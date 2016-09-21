@@ -1,71 +1,68 @@
- //declare bacteria variables here  
+ //declare Topping variables here  
  int rgb;
- Bacteria [] colony;
+ Topping [] boba;
  void setup()   
  {     
- 	size(1000,500);
- 	//initialize bacteria variables here
- 	colony = new Bacteria[255];
- 	for(int i = 0; i<colony.length; i++){
- 		colony[i] = new Bacteria();
+ 	size(300,500);
+ 	//initialize Topping variables here
+ 	boba = new Topping[50];
+ 	for(int i = 0; i<boba.length; i++){
+ 		boba[i] = new Topping();
  	}
  }   
  void draw()   
  {    
- 	//move and show the bacteria 
+ 	//move and show the Topping 
  	background(255);
- 	for (int i = 0; i < colony.length; i++){
- 		colony[i].zoom();
- 		colony[i].show();
- 		colony[i].move();
+ 	for (int i = 0; i < boba.length; i++) {
+ 		boba[i].show();
+ 		boba[i].move();
  		rgb = i;
  		
  	}
- 	
- 	strokeWeight(5);
- 	stroke(0);
- 	fill(0,255,0,50);
- 	ellipse(mouseX, mouseY, 100,100);
  }
- class Bacteria
+ class Topping
  {     
  	int myX, myY, bSize;
- 	boolean magnify;
- 	Bacteria()
+ 	Topping()
  	{
- 		myX = 500;
- 		myY = 250;
- 		bSize = 5;
- 		magnify = false;
+ 		myX = 150;
+ 		myY = 400;
+ 		bSize = 40;
  	}  
  	void move()
  	{
- 		myX = myX + (int)(Math.random()*3)-1;
- 		myY = myY + (int)(Math.random()*3)-1;
+ 		if (myX+25 >= 300) 
+ 		{
+ 			myX = myX - 3; 
+ 		}
+ 		else if (myX-25 <= 0)
+ 		{
+ 			myX = myX + 3;
+ 		}  
+ 		else if (myY >= 500)
+ 		{
+
+ 		}  
+ 		else if (myY <= 0)
+ 		{
+ 			myY = myY + 3;
+ 		}
+ 		else 
+ 		{
+ 			myX = myX + (int)(Math.random()*3)-1;
+ 			myY = myY + (int)(Math.random()*3)-1;
+ 		}
  	}
 
  	void show()
  	{
- 		noStroke();
+ 		strokeWeight(1);
+ 		stroke(100,50,0);
  		rgb = rgb + 1;
  		fill(rgb);
  		ellipse(myX,myY, bSize, bSize);
  		
  	}	
- 	void zoom()
- 		{if (get(myX,myY) <= color(255) && get(myX,myY) >= color(0))
- 		{
-  			magnify = true;
- 		}
- 		{
- 			magnify = false;
- 		}
- 		if (magnify == true)
- 		{
- 			bSize = 20;
- 		}
- 		if (magnify == false){
- 			bSize = 5;	
- 		}
- 	}
+ 
  }    
