@@ -33,15 +33,19 @@
  	int myX, myY, bSize;
  	Topping()
  	{
- 		myX = 150;
+ 		myX = (int)(Math.random()*300)-150;
  		myY = 400;
- 		bSize = 40;
+ 		bSize = 25;
  	}  
  	void move()
  	{
-
- 		myX = myX + (int)(Math.random()*5)-2;
- 		myY = myY + (int)(Math.random()*5)-2;
+ 		if (myX > mouseX){
+ 			myX = myX - (int)(Math.random()*2);
+ 		}
+ 		if (myX < mouseX){
+ 			myX = myX + (int)(Math.random()*2);
+ 		}
+ 		myY = myY + (int)(Math.random()*3)-1;
  	}
 
  	void show()
